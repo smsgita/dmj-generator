@@ -6,8 +6,9 @@
   "author": "dmj",
   "createTime": "2023-11-22",
   "fileConfig": {
-    "inputRootPath": "D:/local-project/project/dmj-generator/generator-demo-projects/acm-template-pro",
+    "inputRootPath": ".source/acm-template-pro",
     "outputRootPath": "generated",
+    "sourceRootPath": "D:/local-project/project/dmj-generator/generator-demo-projects/acm-template-pro",
     "type": "dir",
     "files": [
       {

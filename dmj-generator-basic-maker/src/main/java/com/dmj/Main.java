@@ -1,10 +1,14 @@
 package com.dmj;
 
 import com.dmj.maker.cli.CommandExecutor;
+import com.dmj.maker.generator.main.MainGenerator;
+import freemarker.template.TemplateException;
+
+import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) {
-        CommandExecutor commandExecutor = new CommandExecutor();
-        commandExecutor.doExecutor(args);
+    public static void main(String[] args) throws TemplateException, IOException, InterruptedException {
+        MainGenerator mainGenerator = new MainGenerator();
+        mainGenerator.doGenerate();
     }
 }
