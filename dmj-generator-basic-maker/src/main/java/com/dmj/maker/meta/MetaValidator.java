@@ -11,6 +11,7 @@ import com.dmj.maker.meta.enums.ModelTypeEnum;
 import java.io.File;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MetaValidator {
     public static void doValidAndFillDetail(Meta meta){
@@ -18,10 +19,10 @@ public class MetaValidator {
 
         validAndFillDetailFileConfig(meta);
 
-        validateAndFillDetailmodelConfig(meta);
+        validateAndFillDetailModelConfig(meta);
     }
 
-    private static void validateAndFillDetailmodelConfig(Meta meta) {
+    private static void validateAndFillDetailModelConfig(Meta meta) {
         // modelConfig 校验和默认值
         Meta.ModelConfig modelConfig = meta.getModelConfig();
         if (modelConfig == null){
@@ -29,6 +30,15 @@ public class MetaValidator {
         }
         List<Meta.ModelConfig.Models> modelInfolist = modelConfig.getModels();
         for (Meta.ModelConfig.Models modelInfo : modelInfolist) {
+            if (StrUtil.isNotEmpty(modelInfo.getGroupKey())){
+                // 生成中间参数、”--author“，”--outputText“
+                List<Meta.ModelConfig.Models> subModelInfoList = modelInfo.getModels();
+                String allArgs = subModelInfoList.stream()
+                        .map(subModelInfo -> String.format("\"--%s\"", subModelInfo.getFieldName()))
+                        .collect(Collectors.joining(","));
+                modelInfo.setAllArgsStr(allArgs);
+                continue;
+            }
             String fieldName = modelInfo.getFieldName();
             if (StrUtil.isBlank(fieldName)){
                 throw new MetaException("未填写 ModelConfig.Models.inputPath");
@@ -77,6 +87,10 @@ public class MetaValidator {
             return;
         }
         for (Meta.FileConfig.FileInfo fileInfo : fileInfoList) {
+            String fileInfoType = fileInfo.getType();
+            if (FileTypeEnum.GROUP.getValue().equals(fileInfoType)){
+                continue;
+            }
             // inputPath: 必填
             String inputPath = fileInfo.getInputPath();
             if (StrUtil.isBlank(inputPath)){
@@ -89,7 +103,6 @@ public class MetaValidator {
             }
 
             // fileInfoType: 默认 inputPath 有文件后缀是 file，否则是 dir
-            String fileInfoType = fileInfo.getType();
             if (StrUtil.isBlank(fileInfoType)){
                 if (StrUtil.isBlank(FileUtil.getSuffix(inputPath))){
                     fileInfo.setType(FileTypeEnum.DIR.getValue());
