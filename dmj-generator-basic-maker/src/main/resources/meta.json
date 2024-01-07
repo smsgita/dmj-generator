@@ -1,95 +1,89 @@
 {
-  "name": "acm-template-pro-generator",
-  "description": "ACM 示例模板生成器",
-  "basePackage": "copy.com.dmj",
-  "version": "1.0",
-  "author": "dmj",
-  "createTime": "2023-11-22",
+  "name": "",
   "fileConfig": {
-    "inputRootPath": ".source/acm-template-pro",
-    "outputRootPath": "generated",
-    "sourceRootPath": "D:/local-project/project/dmj-generator/generator-demo-projects/acm-template-pro",
-    "type": "dir",
+    "sourceRootPath": "D:/local-project/project/dmj-generator/.temp/1/springboot-init",
     "files": [
       {
-        "inputPath": "src/com/dmj/acm/MainTemplate.java.ftl",
-        "outputPath": "src/com/dmj/acm/MainTemplate.java",
-        "type": "file",
-        "generateType": "dynamic",
-        "condition": "condition"
-      },
-      {
-        "inputPath": ".gitignore",
-        "outputPath": ".gitignore",
-        "type": "file",
-        "generateType": "static"
-      },
-      {
-        "inputPath": "README.md",
-        "outputPath": "README.md",
-        "type": "file",
-        "generateType": "static"
-      },
-      {
-        "groupKey": "condition",
-        "groupName": "otherFiles",
+        "condition": "test",
+        "groupKey": "test",
+        "groupName": "test",
         "type": "group",
-        "condition": "condition",
         "files": [
           {
-            "inputPath": ".gitignore",
-            "outputPath": ".gitignore",
+            "inputPath": "src/main/java/com/yupi/springbootinit/controller/UserController.java.ftl",
+            "outputPath": "src/main/java/com/yupi/springbootinit/controller/UserController.java.ftl",
             "type": "file",
             "generateType": "static"
           },
           {
-            "inputPath": "README.md",
-            "outputPath": "README.md",
+            "inputPath": "src/main/java/com/yupi/springbootinit/controller/UserController.java",
+            "outputPath": "src/main/java/com/yupi/springbootinit/controller/UserController.java",
+            "type": "file",
+            "generateType": "static"
+          },
+          {
+            "inputPath": "src/main/java/com/yupi/springbootinit/controller/PostController.java.ftl",
+            "outputPath": "src/main/java/com/yupi/springbootinit/controller/PostController.java.ftl",
+            "type": "file",
+            "generateType": "static"
+          },
+          {
+            "inputPath": "src/main/java/com/yupi/springbootinit/controller/PostController.java",
+            "outputPath": "src/main/java/com/yupi/springbootinit/controller/PostController.java",
+            "type": "file",
+            "generateType": "static"
+          },
+          {
+            "inputPath": "src/main/java/com/yupi/springbootinit/common/BaseResponse.java.ftl",
+            "outputPath": "src/main/java/com/yupi/springbootinit/common/BaseResponse.java.ftl",
+            "type": "file",
+            "generateType": "static"
+          },
+          {
+            "inputPath": "src/main/java/com/yupi/springbootinit/common/BaseResponse.java",
+            "outputPath": "src/main/java/com/yupi/springbootinit/common/BaseResponse.java",
             "type": "file",
             "generateType": "static"
           }
         ]
+      },
+      {
+        "inputPath": "src/main/java/com/yupi/springbootinit/controller/UserController.java.ftl",
+        "outputPath": "src/main/java/com/yupi/springbootinit/controller/UserController.java.ftl",
+        "type": "file",
+        "generateType": "static"
+      },
+      {
+        "inputPath": "src/main/java/com/yupi/springbootinit/controller/UserController.java",
+        "outputPath": "src/main/java/com/yupi/springbootinit/controller/UserController.java",
+        "type": "file",
+        "generateType": "static"
+      },
+      {
+        "inputPath": "src/main/java/com/yupi/springbootinit/controller/PostController.java.ftl",
+        "outputPath": "src/main/java/com/yupi/springbootinit/controller/PostController.java.ftl",
+        "type": "file",
+        "generateType": "static"
+      },
+      {
+        "inputPath": "src/main/java/com/yupi/springbootinit/controller/PostController.java",
+        "outputPath": "src/main/java/com/yupi/springbootinit/controller/PostController.java",
+        "type": "file",
+        "generateType": "static"
+      },
+      {
+        "inputPath": "src/main/java/com/yupi/springbootinit/common/BaseResponse.java",
+        "outputPath": "src/main/java/com/yupi/springbootinit/common/BaseResponse.java.ftl",
+        "type": "file",
+        "generateType": "dynamic"
       }
     ]
   },
   "modelConfig": {
     "models": [
       {
-        "fieldName": "condition",
-        "type": "boolean",
-        "description": "控制开关",
-        "defaultValue": true,
-        "abbr": "c"
-      },
-      {
-        "fieldName": "loop",
-        "type": "boolean",
-        "description": "是否生成循环",
-        "defaultValue": false,
-        "abbr": "l"
-      },
-      {
-        "groupKey": "mainTemplate",
-        "groupName": "核心模板",
-        "type": "MainTemplate",
-        "description": "用于生成核心模板文件",
-        "condition": "loop",
-        "models": [
-          {
-            "fieldName": "author",
-            "type": "String",
-            "description": "作者注释",
-            "defaultValue": "dmj",
-            "abbr": "a"
-          },
-          {
-            "fieldName": "outputText",
-            "type": "String",
-            "description": "输出信息",
-            "defaultValue": "sum = ",
-            "abbr": "o"
-          }
-        ]
+        "fieldName": "className",
+        "type": "String"
       }
     ]
   }

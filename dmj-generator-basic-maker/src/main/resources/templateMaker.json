@@ -1,0 +1,29 @@
+{
+  "id": 1,
+  "meta": {
+    "name": "acm-template-pro-generator",
+    "description": "ACM 示例模板生成器"
+  },
+  "originProjectPath": "../../../generator-demo-projects/springboot-init",
+  "fileConfig": {
+    "fileInfoConfigList": [
+      {
+        "path": "src/main/java/com"
+      }
+    ]
+  },
+  "modelConfig": {
+    "modelInfoConfigList": [
+      {
+        "fieldName": "basePackage",
+        "description":"基础包名",
+        "type": "String",
+        "defaultValue": "com.dmj",
+        "replaceText": "com.yupi"
+      }
+    ]
+  },
+  "outputConfig": {
+    "removeGroupFilesFromRoot": true
+  }
+}

@@ -1,6 +1,5 @@
 package com.dmj;
 
-import com.dmj.maker.cli.CommandExecutor;
 import com.dmj.maker.generator.main.MainGenerator;
 import freemarker.template.TemplateException;
 

@@ -1,4 +1,4 @@
-package com.dmj.maker.model;
+package com.dmj.maker.cli.command.model;
 
 import lombok.Data;
 

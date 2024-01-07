@@ -139,7 +139,7 @@ public class GeneratorTemplate {
         // 复制原始文件到代码生成器目录下的指定目录
         String sourceRootPath = meta.getFileConfig().getSourceRootPath();
         String sourceCopyPath = outputPath + File.separator + ".source";
-        FileUtil.copy(sourceRootPath,sourceCopyPath,false);
+        FileUtil.copy(sourceRootPath,sourceCopyPath,true);
         return sourceCopyPath;
     }
 }

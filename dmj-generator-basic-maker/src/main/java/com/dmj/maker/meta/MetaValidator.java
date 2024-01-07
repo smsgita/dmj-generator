@@ -28,11 +28,11 @@ public class MetaValidator {
         if (modelConfig == null){
             return;
         }
-        List<Meta.ModelConfig.Models> modelInfolist = modelConfig.getModels();
-        for (Meta.ModelConfig.Models modelInfo : modelInfolist) {
+        List<Meta.ModelConfig.ModelInfo> modelInfolist = modelConfig.getModels();
+        for (Meta.ModelConfig.ModelInfo modelInfo : modelInfolist) {
             if (StrUtil.isNotEmpty(modelInfo.getGroupKey())){
                 // 生成中间参数、”--author“，”--outputText“
-                List<Meta.ModelConfig.Models> subModelInfoList = modelInfo.getModels();
+                List<Meta.ModelConfig.ModelInfo> subModelInfoList = modelInfo.getModels();
                 String allArgs = subModelInfoList.stream()
                         .map(subModelInfo -> String.format("\"--%s\"", subModelInfo.getFieldName()))
                         .collect(Collectors.joining(","));
@@ -65,7 +65,7 @@ public class MetaValidator {
         String inputRootPath = fileConfig.getInputRootPath();
         if (StrUtil.isEmpty(inputRootPath)){
             // inputRootPath: .source + sourceRootPath最后一个层级目录
-            String defaultInputRootPath = ".source" + File.separator +
+            String defaultInputRootPath = ".source/"+
                     FileUtil.getLastPathEle(Paths.get(sourceRootPath)).getFileName().toString();
             fileConfig.setInputRootPath(defaultInputRootPath);
         }

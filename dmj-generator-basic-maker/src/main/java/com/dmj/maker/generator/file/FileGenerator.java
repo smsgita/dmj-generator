@@ -1,20 +1,11 @@
 package com.dmj.maker.generator.file;
 
-import com.dmj.maker.model.DataModel;
 import freemarker.template.TemplateException;
 
 import java.io.File;
 import java.io.IOException;
 
 public class FileGenerator {
-    public static void main(String[] args) throws TemplateException, IOException {
-        // 数据模型
-        DataModel model = new DataModel();
-        model.setAuthor("dmj");
-        model.setOutputText("输出结果名称");
-        model.setLoop(false);
-        doGenerator(model);
-    }
     public static void doGenerator(Object model) throws TemplateException, IOException {
         // 1.静态文件生成
         // 使用相对路径，用户使用时文件不会是固定结构

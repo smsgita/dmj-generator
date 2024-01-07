@@ -44,11 +44,11 @@ public class Meta {
     @NoArgsConstructor
     @Data
     public static class ModelConfig {
-        private List<Models> models;
+        private List<ModelInfo> models;
 
         @NoArgsConstructor
         @Data
-        public static class Models {
+        public static class ModelInfo {
             private String fieldName;
             private String type;
             private String description;
@@ -56,8 +56,8 @@ public class Meta {
             private String abbr;
             private String groupKey;
             private String groupName;
-            private String createTime;
-            private List<Models> models;
+            private String condition;
+            private List<ModelInfo> models;
             private String allArgsStr;
         }
     }

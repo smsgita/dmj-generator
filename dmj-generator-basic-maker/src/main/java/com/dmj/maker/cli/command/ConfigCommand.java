@@ -1,7 +1,7 @@
 package com.dmj.maker.cli.command;
 
 import cn.hutool.core.util.ReflectUtil;
-import com.dmj.maker.model.DataModel;
+import com.dmj.maker.cli.command.model.DataModel;
 import picocli.CommandLine.Command;
 
 import java.lang.reflect.Field;

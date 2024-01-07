@@ -9,14 +9,14 @@ import picocli.CommandLine.*;
 import java.util.concurrent.Callable;
 
 <#macro generatorOption indent modelInfo>
-${indent}@Option(names ={<#if modelInfo.abbr??>"-${modelInfo.abbr}"</#if>,<#if modelInfo.fieldName??>"--${modelInfo.fieldName}"</#if>}, description = "<#if modelInfo.description??>${modelInfo.description}</#if>",arity = "0..1",interactive = true,echo = true)
+${indent}@Option(names ={<#if modelInfo.abbr??>"-${modelInfo.abbr}",</#if><#if modelInfo.fieldName??>"--${modelInfo.fieldName}"</#if>}, description = "<#if modelInfo.description??>${modelInfo.description}</#if>",arity = "0..1",interactive = true,echo = true)
 ${indent}private ${modelInfo.type} ${modelInfo.fieldName}<#if modelInfo.defaultValue??>= ${modelInfo.defaultValue?c}</#if>;
 </#macro>
 
 <#macro generatorCommand indent modelInfo>
 ${indent}System.out.println("输入${modelInfo.groupName}配置:");
-${indent}CommandLine commandLine = new CommandLine(${modelInfo.type}Command.class);
-${indent}commandLine.execute(${modelInfo.allArgsStr});
+${indent}CommandLine ${modelInfo.groupKey}CommandLine = new CommandLine(${modelInfo.type}Command.class);
+${indent}${modelInfo.groupKey}CommandLine.execute(${modelInfo.allArgsStr});
 </#macro>
 @Data
 @Command(name = "generate", version = "ASCIIArt 1.0", mixinStandardHelpOptions = true)
@@ -60,9 +60,10 @@ public class GenerateCommand implements Callable {
         if(${modelInfo.condition}){
             <@generatorCommand indent="          " modelInfo=modelInfo></@generatorCommand>
         }
+        <#else >
+            <@generatorCommand indent="         " modelInfo=modelInfo/>
         </#if>
 
-        <@generatorCommand indent="      " modelInfo=modelInfo/>
         </#if>
         </#list>
         //填充数据模型对象

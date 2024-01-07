@@ -1,9 +1,8 @@
 package com.dmj.maker.cli.command;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.dmj.maker.cli.command.model.DataModel;
 import com.dmj.maker.generator.file.FileGenerator;
-import com.dmj.maker.model.DataModel;
-import picocli.CommandLine;
 import picocli.CommandLine.*;
 import java.util.concurrent.Callable;
 
